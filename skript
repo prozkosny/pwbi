@@ -1,11 +1,17 @@
-let
-    Zdroj = Table.Combine({data2, data1}),
-    #"Sloučené dotazy" = Table.NestedJoin(Zdroj, {"Oblast"}, oblasti, {"Code 2021"}, "oblasti", JoinKind.LeftOuter),
-    #"Rozbalené oblasti" = Table.ExpandTableColumn(#"Sloučené dotazy", "oblasti", {"NUTS level", "NUTS level 3", "NUTS level 2", "NUTS level 1", "Country"}, {"NUTS level", "NUTS level 3", "NUTS level 2", "NUTS level 1", "Country"}),
-    #"Filtrované řádky3" = Table.SelectRows(#"Rozbalené oblasti", each Text.StartsWith([Oblast], "CZ")),
-    #"Další sloupce převedené na řádky" = Table.UnpivotOtherColumns(#"Filtrované řádky3", {"Rok", "Oblast", "Oblast popis", "Vek", "NUTS level 3", "NUTS level 2", "NUTS level 1", "NUTS level","Country"}, "Atribut", "Hodnota"),
-    #"Filtrované řádky1" = Table.SelectRows(#"Další sloupce převedené na řádky", each ([Atribut] <> "Total")),
-    #"Přejmenované sloupce" = Table.RenameColumns(#"Filtrované řádky1",{{"Atribut", "Pohlavi"}}),
-    #"Filtrované řádky2" = Table.SelectRows(#"Přejmenované sloupce", each ([Vek] <> "Total") and ([NUTS level] = 3))
-in
-    #"Filtrované řádky2"
+02 suma hodnota zeny = 
+
+
+-- suma nad sloupcem Hodnota pro dany rok a pohlavi Zeny
+-- k existujicimu filtru vizualu potrebujeme pridat filtr nad sloupcem pohlavi
+
+-- krok2: Funkce SUMX() scita tabulku vracenou funkci FILTER()
+-- nad sloupcem Hodnota
+sumx(
+--krok1: Funkce FILTER() prebira tabulku filtrovanou vizualem
+-- a a plikuje filtr nad sloupcem pohlavi
+-- funkce FILTER() vrati tabulku
+FILTER( 
+        -- tabulka data je filtrovana vizualem pres sloupec rok
+        data,
+        data[Pohlavi] = "zeny"),
+data[Hodnota])
