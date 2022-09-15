@@ -39,3 +39,23 @@ SUMX(
         ALL(data)
         ,data[Rok] = 2000),
 data[PRCP])
+
+
+
+
+05 suma minimalni rok = 
+
+--krok5
+SUMX(
+    --krok4
+    FILTER(
+        --krok3
+        ALL(data)
+        ,data[Rok] =
+            --krok2
+            minx(
+                --krok1
+                ALL(data),data[Rok])),
+
+data[PRCP])
+
