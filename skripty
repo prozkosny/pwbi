@@ -26,3 +26,16 @@ sumx(
     -- tj. rusim filtr vizualu
     all(data),
 data[PRCP])
+
+
+
+04 suma rok 2000 = 
+
+--krok3: Funkce SUMX() scita sloupec PRCP tabulky vracene funkci FILTER()
+SUMX(
+    --krok2: Funkce FILTER() filtruje tabulku vracenou funkci ALL()
+    FILTER(
+        --krok1: Funkce ALL() vytvari kopii tabulky data se vsemi jejimi hodnotami
+        ALL(data)
+        ,data[Rok] = 2000),
+data[PRCP])
