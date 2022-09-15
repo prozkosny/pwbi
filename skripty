@@ -1,1 +1,5 @@
 
+01 suma srazek = 
+-- zakladni agregacni funkce, ktera respektuje filtry vizualu,
+-- zadne nepridava ani nerusi
+sum(data[PRCP])
