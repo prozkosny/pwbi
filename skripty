@@ -3,3 +3,16 @@
 -- zakladni agregacni funkce, ktera respektuje filtry vizualu,
 -- zadne nepridava ani nerusi
 sum(data[PRCP])
+
+
+
+02 suma srazek turany = 
+--krok4: Funkce SUMX() scita tabulku vracenou funkci FILTER()
+SUMX(
+    --krok3: Funkce FILTER() vraci tabulku
+    FILTER(
+        --krok1: Funkce FILTER() prebira tabulku data filtrovanou vizualem
+        data
+        --krok2: Funkce FILTER() aplikuje filtr nad sloupec NAME
+        ,data[NAME] = "TURANY")
+,data[PRCP])
