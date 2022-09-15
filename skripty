@@ -16,3 +16,13 @@ SUMX(
         --krok2: Funkce FILTER() aplikuje filtr nad sloupec NAME
         ,data[NAME] = "TURANY")
 ,data[PRCP])
+
+
+
+03 suma prcp vsechny roky = 
+--krok2: Funkce SUMX() scita sloupec PRCP tabulky vracene funkci ALL()
+sumx(
+    --krok1: Funkce ALL() vytrvari kopii tabulky data se vsemi jejimi hodnotami,
+    -- tj. rusim filtr vizualu
+    all(data),
+data[PRCP])
