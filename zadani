@@ -1,0 +1,50 @@
+20. Maximální PRCP v daném roce
+21. Suma PRCP v daném roce pro name = MOSNOV
+22. Suma PRCP v předchozím roce pro NAME = MOSNOV
+
+
+23. Maximální PRCP v daném roce pro name MOSNOV, TURANY, SALZBURG
+24. Maximální PRCP ve vsech letech a vsech name
+25. Maximální PRCP vse vsech letech v name = MOSNOV
+
+BONUS1: Maximalni PRCP v danem roce pro lokality mimo Cesko a Slovensko
+BONUS2: Pocet dnu v danem roce, ve kterem v lokalite MOSNOV byly PRCP vyssi 0 a mensi 2
+
+26. Suma PRCP v daném roce a daném NAME
+27. Suma PRCP v predchozim roce a dane NAME
+28. Suma PRCP v danem roce za vsechny NAME
+
+29. Suma PRCP v danem NAME a minimalnim roce dane NAME
+30. Suma PRCP v danem name a minimalnim roce ze vsech NAME
+31. Maximalni PRCP v danem name a danem roce, vsechny zeme
+
+
+
+Maximalni Date maximalnich PRCP dane NAME v danem roce
+Maximalni Date maximalnich PRCP dane NAME ve vsech letech
+Maximalni Date maximalnich PRCP dane NAME v minimalnim roce dane NAME
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Vizuál typu průřez s hodnotami z data[name]
+Vizuál typu sloupcový graf
+	- osa x: rok
+	- osa y: suma prcp pro daný rok a danou name
+
+V popisu nad sloupcovým grafem zobrazit spojnicovy graf:
+- osa x: mesic
+- osa y: suma srazek v dane lokalite, danem mesici a roce
+- sekundarni osa y: suma srazek v dane lokalite, danem mesici a predchozim roce
+
+Nad sloupcovým grafem nastavit podrobnou analýzu zobrazující
+
+Sloupcový graf:
+	- osa x: mesic
+	- osa y: max tmax v danem mesici, lokalite, roce
+Nastavit podminene formatovani nad sloupcovym grafem, kdyz tmax z daneho mesice, lokality a roku
+je nejvyssi hodnotou ve sloupcovem grafu, tak barva "gold", jinak barva "black".
+
+
