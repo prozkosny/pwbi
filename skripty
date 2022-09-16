@@ -76,3 +76,18 @@ SUMX(
 data[PRCP])
 
 return vypocet
+
+
+
+
+35 cf barva grafu = 
+
+IF(
+    MAX(data[TMAX]) = 
+    MAXX(
+        FILTER(
+            ALL(data),
+        data[Rok] = SELECTEDVALUE(data[Rok])
+        && data[NAME] = SELECTEDVALUE(data[NAME])),
+    data[TMAX]),
+    "GOLD","BLACK")
