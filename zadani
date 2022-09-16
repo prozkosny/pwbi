@@ -47,4 +47,27 @@ Sloupcový graf:
 Nastavit podminene formatovani nad sloupcovym grafem, kdyz tmax z daneho mesice, lokality a roku
 je nejvyssi hodnotou ve sloupcovem grafu, tak barva "gold", jinak barva "black".
 
+----------------------------------------------------------
+
+
+
+Vizuál typu průřez s hodnotami z data[name]
+Vizuál typu sloupcový graf
+	- osa x: rok
+	- osa y: suma prcp pro daný rok a danou name
+
+V popisu nad sloupcovým grafem zobrazit spojnicovy graf:
+- osa x: mesic
+- osa y: suma srazek v dane lokalite, danem mesici a roce
+- sekundarni osa y: suma srazek v dane lokalite, danem mesici a predchozim roce
+
+Nad sloupcovým grafem nastavit podrobnou analýzu zobrazující
+
+Sloupcový graf:
+	- osa x: mesic
+	- osa y: max tmax v danem mesici, lokalite, roce
+Nastavit podminene formatovani nad sloupcovym grafem, kdyz tmax z daneho mesice, lokality a roku
+je nejvyssi hodnotou ve sloupcovem grafu, tak barva "gold", jinak barva "black".
+
+
 
