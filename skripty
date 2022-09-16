@@ -59,3 +59,20 @@ SUMX(
 
 data[PRCP])
 
+
+
+
+
+27 suma PRCP name predchozi rok = 
+
+VAR predchozi_rok = SELECTEDVALUE(data[Rok]) - 1
+VAR lokalita= SELECTEDVALUE(data[NAME])
+var vypocet = 
+SUMX(
+    FILTER(
+        ALL(data),
+    data[NAME] = lokalita
+    && data[Rok] = predchozi_rok ),
+data[PRCP])
+
+return vypocet
