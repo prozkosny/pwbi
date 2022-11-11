@@ -1,0 +1,65 @@
+05 suma srazek v danem roce = 
+
+-- Pocitame sumu srazek s respektovanim filtru vizualu. Zadne dalsi filtry nenastavujeme,
+-- tj. je mozne pouzit zakladni agregacni funkci
+
+SUM(data[Srazky])
+
+
+06 suma srazek v predchozim roce = 
+
+-- Potrebujeme se zbavit filtru nad rokem a nastavit jej znovu, funkce ALL() nas ale zbavi i filtru nad mestem, ktery potrebujeme,
+-- tj. nastavime jej znovu
+
+SUMX(
+    --krok3: Funkce FILTER() vraci zafiltrovanou tabulku
+    FILTER(
+        --krok1: Vytvoreni kopie tabulky data zbavene vsech filtru
+        ALL(data),
+    --krok2: Nastaveni filtru na tabulku vracenou funkci ALL(), pricemz hodnoty filtru dopocitavame s originalni (tj. zafiltrovane) tabulky
+    -- data
+    data[Rok] = SELECTEDVALUE(data[Rok]) - 1
+    && data[Mesto] = SELECTEDVALUE(data[Mesto])),
+--krok5: Funkce SUMX() scita sloupec [Srazky] za pomoci tabulky vracene funkci FILTER()
+data[Srazky])
+
+
+07 prumerne srazky dany rok lokalita = 
+-- Akceptujeme filtry vizualut, tj. jak filtr nad [Rok] tak [Mesto], zadne filtry nenastavujeme,
+-- tj. pouzijeme zakladni agregacni funkci
+
+AVERAGE(data[Srazky])
+
+
+08 prumerne srazky dany rok vsechny lokality = 
+-- Potrebujeme zrusit filtr nad [Mesto], funkce ALL() nas ale zbavi i filtru nad [Rok], tj. ten potrebujeme nastavit znovu
+AVERAGEX(
+    --krok3: Funkce FILTER() vraci zafiltrovanou tabulku
+    FILTER(
+        --krok1: Kopie tabulky data zbavena vsech filtru
+        ALL(data),
+    --krok2: Nastaveni filtru nad sloupec [Rok] tabulky vracene funkci ALL(), pricemz hodnotu filtru dopocitavame z 
+    -- tabulky data, ktera zustava filtrovana
+    data[Rok] = SELECTEDVALUE(data[Rok])),
+-- krok4: Soucet sloupce [Srazky] za pomoci tabulky vracene funkci FILTER()
+data[Srazky])
+
+
+
+09 podminene formatovani maximalni srazky = 
+
+-- Pokud jsou srazky v danem roce a lokalite nejvyssimi srazkami vubec, tak podminene formatujeme
+-- na barvu gold.
+-- Pokud jsou srazky nejvyssimi srazkami pro danou lokalitu napric roky, podminene formatujeme na barvu silver
+
+IF(
+    -- maximalni srazky pro dany rok a mesto
+    MAX(data[Srazky]) = 
+    -- maximalni srazky pro vsechny roky a vsechna meste
+    MAXX(ALL(data),data[Srazky]), "gold",
+    IF(
+        -- maximalni srazky pro dany rok a mesto
+        MAX(data[Srazky]) = 
+        --maximalni srazky pro dane mesto a vsechny roky
+    MAXX(FILTER(ALL(data),
+    data[Mesto] = SELECTEDVALUE(data[Mesto])),data[Srazky]),"silver"))
