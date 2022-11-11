@@ -85,3 +85,8 @@ MAXX(
 return verze2
     
     
+32 rozdil srazek = 
+
+VAR max_srazky_zeme = MAXX(FILTER(ALL(data),data[Zeme] = SELECTEDVALUE(data[Zeme])),data[Srazky])
+VAR max_srazky_vse = MAXX(ALL(data),data[Srazky])
+return max_srazky_zeme - max_srazky_vse
