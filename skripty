@@ -65,6 +65,12 @@ IF(
     data[Mesto] = SELECTEDVALUE(data[Mesto])),data[Srazky]),"silver"))
   
   
+  30 maximalni datum rakousko = 
+
+MAXX(FILTER(ALL(data),data[Zeme] = "Rakousko"),data[Datum])
+  
+  
+  
   31 maximalni srazky posledni datum zeme = 
 -- v danem meste srazky posledniho datumu zeme
 VAR verze1 =
