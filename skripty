@@ -63,3 +63,25 @@ IF(
         --maximalni srazky pro dane mesto a vsechny roky
     MAXX(FILTER(ALL(data),
     data[Mesto] = SELECTEDVALUE(data[Mesto])),data[Srazky]),"silver"))
+  
+  
+  31 maximalni srazky posledni datum zeme = 
+-- v danem meste srazky posledniho datumu zeme
+VAR verze1 =
+MAXX(
+    FILTER(data,
+    data[Datum] =
+            MAXX(
+                FILTER(ALL(data),data[Zeme] = SELECTEDVALUE(data[Zeme])),data[Datum])),
+    data[Srazky])
+VAR verze2= 
+MAXX(
+    FILTER(all(data),
+    data[Zeme] = SELECTEDVALUE(data[Zeme])
+    && data[Datum] =
+            MAXX(
+                FILTER(ALL(data),data[Zeme] = SELECTEDVALUE(data[Zeme])),data[Datum])),
+    data[Srazky])
+return verze2
+    
+    
