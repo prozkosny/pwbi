@@ -96,3 +96,29 @@ return verze2
 VAR max_srazky_zeme = MAXX(FILTER(ALL(data),data[Zeme] = SELECTEDVALUE(data[Zeme])),data[Srazky])
 VAR max_srazky_vse = MAXX(ALL(data),data[Srazky])
 return max_srazky_zeme - max_srazky_vse
+
+
+
+
+33 suma srazek = 
+
+-- suma srazek v danem mesici roku a mestu
+
+VAR suma_srazek = SUM(data[Srazky])
+-- kumulativni suma srazek v danem roku a mestu
+VAR kumulativni_srazky =
+
+SUMX(
+    FILTER(
+        ALL(data),
+    data[Mesic] <= SELECTEDVALUE(data[Mesic])
+    &&data[Rok] = SELECTEDVALUE(data[Rok])
+    &&data[Mesto] = SELECTEDVALUE(data[Mesto])),
+data[Srazky])
+
+RETURN
+    IF(
+        SELECTEDVALUE('typ srazek'[Hodnota]) = "prubezne",
+        suma_srazek,
+        kumulativni_srazky)
+
