@@ -1,1 +1,16 @@
 
+02 pocet operator 1 = 
+
+countx(
+    --krok3: Funkce FILTER() vraci
+    --tabulku
+    filter(
+    --krok1: Funkce FILTER() prebira
+    -- tabulku data filtrovanou vizualem
+    data,
+    --krok2: Aplikace filtru na sloupec
+    --[uzivatel]
+    data[uzivatel] = "1"),
+--krok4: Pocet hodnot ve sloupci [vaha]
+--tabulky vracene funkci FILTER()
+data[vaha])
