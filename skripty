@@ -45,4 +45,18 @@ data[vaha])
 
 
 
+08 tydenni maximum = 
 
+IF(
+    ROUND(sum(data[vaha]),2) = 
+ROUND(
+MAXX(
+    SUMMARIZE(
+        filter(
+        ALL(data),
+        data[cislo_tydne] = 
+    MAX(data[cislo_tydne])),
+    data[den_tydne],
+    "Denni incidenty",
+    sum(data[vaha])),
+[Denni incidenty]),2),"GOLD")
