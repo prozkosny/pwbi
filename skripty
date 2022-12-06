@@ -14,3 +14,15 @@ countx(
 --krok4: Pocet hodnot ve sloupci [vaha]
 --tabulky vracene funkci FILTER()
 data[vaha])
+
+
+
+03 pocet vse = 
+
+COUNTX(
+--krok1: Funkce ALL() vraci kopii tabulky
+--data zbavenou vsech filtru
+    ALL(data),
+--krok2: Pocet hodnot ve sloupci [vaha]
+--tabulky vracene funkci ALL()
+data[vaha])
