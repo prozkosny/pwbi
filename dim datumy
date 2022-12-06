@@ -1,8 +1,0 @@
-dim datumy = 
-
-ADDCOLUMNS(
-   SELECTCOLUMNS( CALENDARAUTO(),"Datum",[Date]),
-"Rok",YEAR([Datum]),
-"Kvartal",QUARTER([Datum]),
-"Mesic",MONTH([Datum]),
-"Den",day([Datum]))
