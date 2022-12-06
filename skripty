@@ -26,3 +26,23 @@ COUNTX(
 --krok2: Pocet hodnot ve sloupci [vaha]
 --tabulky vracene funkci ALL()
 data[vaha])
+
+
+
+04 pocet den 30 = 
+
+COUNTX(
+    --krok2: Filtrovani tabulky vracene
+    --funkci ALL()
+    filter(
+        --krok1: Kopie tabulky data
+        --zbavena vsech filtru
+        all(data),
+    data[den_mesice] = 30),
+--krok3: Agregace sloupce [vaha]
+--tabulky vracene funkci FILTER()
+data[vaha])
+
+
+
+
