@@ -55,3 +55,13 @@ COUNTX(
     &&data[srazky] = 0
     &&data[lokalita] = "RUZYNE"),
 data[datum])
+
+
+
+13 pocet dnu v ruzyne teplota pod 0 = 
+
+COUNTX(
+    FILTER(data,
+    data[teplota] <0
+    && data[lokalita] = "RUZYNE"),
+data[datum])
