@@ -65,3 +65,26 @@ COUNTX(
     data[teplota] <0
     && data[lokalita] = "RUZYNE"),
 data[datum])
+
+
+
+
+18 suma srazek v danem roce a minimalnim roce = 
+
+-- suma srazek v danem roce a dane lokalite
+-- minus suma srazek v minimalnim roce v dane lokalite
+-- suma srazek v danem roce a lokalite
+SUM(data[srazky])
+- 
+SUMX(
+    FILTER(
+        ALL(data),
+    data[lokalita] = SELECTEDVALUE(data[lokalita])
+    -- ROK SE ROVNÁ MINIMÁLNÍMU ROKU PRO DANOU LOKALITU
+    &&data[rok] =
+    MINX(
+        FILTER(
+        ALL(data),
+    data[lokalita] = SELECTEDVALUE(data[lokalita])),
+    data[rok])),
+data[srazky])
