@@ -41,3 +41,17 @@ SUMX(
         ALL(data),
     data[rok] = 2016),
     data[srazky])
+
+
+
+
+12 pocet tropickych dnu ruzyne = 
+-- v danem roce
+-- teplota > 30
+-- srazky = 0
+COUNTX(
+    FILTER(data,
+    data[teplota] > 30
+    &&data[srazky] = 0
+    &&data[lokalita] = "RUZYNE"),
+data[datum])
