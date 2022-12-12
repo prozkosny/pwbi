@@ -88,3 +88,15 @@ SUMX(
     data[lokalita] = SELECTEDVALUE(data[lokalita])),
     data[rok])),
 data[srazky])
+
+
+
+17 suma srazek mezirocne = 
+SUM(data[srazky])
+- 
+SUMX(
+    FILTER(
+        ALL(data),
+    data[lokalita] = SELECTEDVALUE(data[lokalita])
+    && data[rok] =  SELECTEDVALUE(data[rok]) - 1),
+data[srazky])
