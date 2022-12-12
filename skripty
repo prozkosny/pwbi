@@ -1,1 +1,43 @@
 
+01 soucet srazek = 
+-- Respektuji filtry vizualu a nepridavam dalsi
+SUM(data[srazky])
+
+
+
+02 suma srazek ruzyne = 
+
+-- respektuji filtry vizualu a pridavam dalsi
+
+--krok2: Funkce SUMX() agreguje sloupec [srazky] tabulky vracene funkci FILTER()
+SUMX(
+    --krok1: Funkce FILTER() prebira tabulku data filtrovanou vizualem
+    
+    FILTER(data
+    -- nastaveni filtru na sloupec [lokalita]
+    ,data[lokalita] = "RUZYNE"),
+data[srazky])
+
+
+
+
+03 suma srazek vsechny roky = 
+
+--krok2: SUMX() agreguje tabulku vracenou funkci ALL()
+SUMX(
+    --krok1: Funkce ALL() vytvari kopii tabulky data zbavenou vsech filtru
+    ALL(data),
+    data[srazky])
+    
+    
+    
+  04 suma srazek 2016 = 
+
+--krok3: Funkce SUMX() agreguje sloupec [srazky] tabulky vracene funkci FILTER()
+SUMX(
+    --krok2: Funkce FILTER() nastavuje podminku a vraci tabulku
+    FILTER(
+        -- krok1: Funkce ALL() vraci kopii tabulky data zbavenou vsech filtru
+        ALL(data),
+    data[rok] = 2016),
+    data[srazky])
