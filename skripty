@@ -213,3 +213,34 @@ RETURN
 SWITCH(TRUE(),
 srazky = max_srazky,"GOLD",
 srazky = min_srazky,"SILVER")
+
+
+38 = 
+
+
+// - osa y2:  Míra "38 srazky obdobi": Suma srážek v dané lokalitě, měsíci
+// 	- v předchozí roce, pokud si uživatel vybral "predchozi rok"
+// 	- minimálním roce dané lokality, pokud si uživatel vybral "minimalni rok"
+// 6a. Do názvu spojnicového grafu dosadit míra "39 nazev grafu"
+
+IF(
+    SELECTEDVALUE(typ_obdobi[typ_obdobi])=
+    "predchozi rok",
+SUMX(
+    FILTER(
+        ALL(data),
+    data[lokalita] = SELECTEDVALUE(data[lokalita])
+    &&data[mesic] = SELECTEDVALUE(data[mesic])
+    &&data[rok] = SELECTEDVALUE(data[rok]) - 1),
+data[srazky]),
+
+sumx(
+    filter(
+        ALL(data),
+    data[lokalita] = SELECTEDVALUE(data[lokalita])
+    &&data[mesic] = SELECTEDVALUE(data[mesic])
+    && data[rok] = 
+    MINX(
+        FILTER(ALL(data),
+        data[lokalita] = SELECTEDVALUE(data[lokalita])),data[rok])),
+    data[srazky]))
