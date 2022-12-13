@@ -149,3 +149,18 @@ MAXX(
     &&data[mesic] = max(data[mesic])),
 data[datum])
 
+
+
+33 suma srazek typ_hodnoty = 
+
+IF(
+    SELECTEDVALUE(typ_hodnoty[typ_hodnoty]) = 
+    "prubezne",
+    SUM(data[srazky]),
+    SUMX(
+        FILTER(
+            ALL(data),
+        data[lokalita] = SELECTEDVALUE(data[lokalita])
+        &&data[rok] = SELECTEDVALUE(data[rok])
+        && data[mesic] <=SELECTEDVALUE(data[mesic])),
+    data[srazky]))
