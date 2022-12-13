@@ -244,3 +244,17 @@ sumx(
         FILTER(ALL(data),
         data[lokalita] = SELECTEDVALUE(data[lokalita])),data[rok])),
     data[srazky]))
+
+
+
+40 max teplota tabulka = 
+
+IF(
+    MAX(data[teplota])
+    =
+    -- maximalni teplota v danem roce napric lokalitami
+    MAXX(
+        FILTER(
+            ALL(data),
+        data[rok] = SELECTEDVALUE(data[rok])),
+    data[teplota]),"GOLD")
