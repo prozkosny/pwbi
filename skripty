@@ -137,3 +137,15 @@ MAXX(
     &&data[mesic] = posledni_mesic_roku_lokality),
 data[datum])
 
+
+
+31a max datum max srazek = 
+// 31. Maximální datum maximálních srážek v daném roce, dané lokalitě a maximálním měsíci 
+// (tj. počítáme maximum srážek v posledním měsíci daného roku v dané lokalitě) 
+
+MAXX(
+    FILTER(data,
+    data[srazky] = MAXX(FILTER(data,data[mesic] = MAX(data[mesic])),data[srazky])
+    &&data[mesic] = max(data[mesic])),
+data[datum])
+
