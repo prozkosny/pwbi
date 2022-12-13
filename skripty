@@ -164,3 +164,28 @@ IF(
         &&data[rok] = SELECTEDVALUE(data[rok])
         && data[mesic] <=SELECTEDVALUE(data[mesic])),
     data[srazky]))
+
+
+34 suma srazek typ_hodnoty predchozi rok = 
+
+IF(
+    SELECTEDVALUE(typ_hodnoty[typ_hodnoty]) = 
+    "prubezne",
+
+   SUMX(
+       FILTER(
+           ALL(data),
+        data[lokalita] = SELECTEDVALUE(data[lokalita])
+        && data[mesic] = SELECTEDVALUE(data[mesic])
+        && data[rok] = SELECTEDVALUE(data[rok]) - 1),
+    data[srazky]),
+
+
+
+    SUMX(
+        FILTER(
+            ALL(data),
+        data[lokalita] = SELECTEDVALUE(data[lokalita])
+        &&data[rok] = SELECTEDVALUE(data[rok]) - 1
+        && data[mesic] <=SELECTEDVALUE(data[mesic])),
+    data[srazky]))
