@@ -189,3 +189,27 @@ IF(
         &&data[rok] = SELECTEDVALUE(data[rok]) - 1
         && data[mesic] <=SELECTEDVALUE(data[mesic])),
     data[srazky]))
+
+
+
+_pf max min srazky = 
+-- nejdestivejsi mesic v danem roce
+VAR srazky = ROUND(SUM(data[srazky]),2)
+
+VAR tabulka = 
+
+SUMMARIZE(
+    FILTER(
+    ALL(data),
+    data[rok] = SELECTEDVALUE(data[rok])),
+    data[mesic],
+    "MESICNI SRAZKY",
+    SUM(data[srazky]))
+
+VAR max_srazky = ROUND(MAXX(tabulka,[MESICNI SRAZKY]),2)
+VAR min_srazky = ROUND(MINX(tabulka,[MESICNI SRAZKY]),2)
+
+RETURN
+SWITCH(TRUE(),
+srazky = max_srazky,"GOLD",
+srazky = min_srazky,"SILVER")
