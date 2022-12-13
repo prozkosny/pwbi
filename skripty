@@ -100,3 +100,24 @@ SUMX(
     data[lokalita] = SELECTEDVALUE(data[lokalita])
     && data[rok] =  SELECTEDVALUE(data[rok]) - 1),
 data[srazky])
+
+
+
+BONUS = 
+ -- Maximální teplota v dané lokalitě v posledním měsíci maximálního roku (napříč lokalitami) 
+
+ MAXX(
+     FILTER(
+         ALL(data),
+    data[lokalita] = SELECTEDVALUE(data[lokalita])
+    -- maximalni rok ze vsech let
+    && data[rok] = maxx(all(data),data[rok])
+    && data[mesic] = 
+    -- posledni mesic posledniho roku
+    MAXX(
+        FILTER(
+        ALL(data),
+    data[rok] = maxx(all(data),data[rok])),
+    data[mesic])),
+data[teplota])
+        
