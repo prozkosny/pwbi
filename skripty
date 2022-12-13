@@ -121,3 +121,19 @@ BONUS =
     data[mesic])),
 data[teplota])
         
+        
+ 31 max datum max srazek = 
+
+// 31. Maximální datum maximálních srážek v daném roce, dané lokalitě a maximálním měsíci 
+// (tj. počítáme maximum srážek v posledním měsíci daného roku v dané lokalitě) 
+
+VAR posledni_mesic_roku_lokality = MAX(data[mesic])
+VAR max_srazky =
+MAXX(FILTER(data,data[mesic] = posledni_mesic_roku_lokality),data[srazky])
+RETURN
+MAXX(
+    FILTER(data,
+    data[srazky] = max_srazky
+    &&data[mesic] = posledni_mesic_roku_lokality),
+data[datum])
+
