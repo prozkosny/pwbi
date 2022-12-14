@@ -270,3 +270,20 @@ ADDCOLUMNS(
 "mesic",month([datum]),
 "den",day([datum]))
 
+
+
+
+01 suma srazek = 
+
+IF(
+    SELECTEDVALUE(typ_obdobi[typ_obdobi]) = 
+    "prubezne",
+SUM(data[srazky]),
+
+SUMX(
+    FILTER(
+        ALL(data),
+    data[lokalita] = SELECTEDVALUE(data[lokalita])
+    &&data[rok] = SELECTEDVALUE(data[rok])
+    &&data[mesic] <= SELECTEDVALUE(data[mesic])),
+data[srazky]))
