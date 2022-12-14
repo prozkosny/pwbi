@@ -1,0 +1,193 @@
+Strana “prehled srazek” 
+
+Do tabulky data dopočítat sloupce 
+
+- rok 
+
+- mesic 
+
+- den (funkce DAY() ) 
+
+- tyden (funkce WEEKNUM, druhý argument má hodnotu 21) 
+
+ 
+
+- Průřez data[lokalita] (omezit 1 výběr) 
+
+- Průřez data[rok] (omezit 1 výběr) 
+
+- Průřez typ_obdobi[typ_obdobi] (omezit na 1 výběr) 
+
+Pozn. pro tento průřez bude třeba vyrobit novou tabulku s hodnotami 
+
+- kumulativne 
+
+- prubezne 
+
+ 
+
+Sloupcový graf 
+
+- osa x: data[mesic] 
+
+- osa y: míra “01 suma srazek” 
+
+- pokud si uživatel v průřezu vybral “prubezne”, tak suma srážek v dané lokalitě, roce, měsíci 
+
+- pokud si uživatel v průřezu vybral “kumulativne”, tak kumulativní suma srážek v daném 	 
+
+roce, lokalitě 
+
+- název grafu: Doplnit “Vývoj srážek v lokalitě {lokalita} v roce {rok} 
+
+- podmíněné formátování: 
+
+- pokud si uživatel v průřezu vybral “prubezne” a suma srážek v daném měsíci, roku a lokalitě 	      je menší než suma srážek v daném měsíci, předchozím roce a dané lokalitě, tak barva “red” 
+
+- pokud si uživatel v průřezu vybral “kumulativne” a kumulativní suma srážek v daném roce a 	měsíci je menší než kumulativní suma srážek v předchozím roce, lokalitě, tak “red” 
+
+ 
+ 
+
+ 
+
+Podrobná analýza 
+
+Nad sloupcovým grafem nastavit podrobnou analýzu dostupnou přes sloupec data[mesic], tato podrobná analýza bude zobrazovat: 
+
+Spojnicový graf 
+
+- osa x: data[den] 
+- osa y: 
+
+- suma srážek v daném roce, měsíci, dnu, lokalitě 
+
+- suma srážek v předchozím roce, daném měsíci, dnu, lokalitě 
+
+ 
+
+Kontingenční tabulka 
+
+- řádky: data[den] 
+
+- sloupce: data[tyden] 
+
+- hodnoty: suma data[srazky] 
+
+- podmíněně formátovat dle škály barev (barevné kombinace jsou na vás) 
+
+ 
+
+Strana “prehled teplot” 
+
+- zkopírovat všechny průřezy nad data[lokalita] a data[rok] strany “prehled srazek”, tyto průřezy synchronizovat 
+
+ 
+
+Kombinovaný skládaný sloucový a spojnicový graf 
+
+- osa x: data[mesic] 
+
+- osa y sloupce: průměrné srážky v daném roce, měsíci, lokalitě 
+
+- osa y řádky: míra “02 prumerne srazky vse”: Průměrné srážky v daném roce, měsíci, dnu, za všechny lokality 
+
+- podmíněné formátování: kalkulovaná míra “03 podminene formatovani”, kde je hodnota z osy y sloupce nižší než hodnota z osa y řádky, tak barva “red” 
+
+- nad kombinovaný graf nasadit popis, ve kterém bude tabulka s hodnotami 
+
+- data[den] 
+
+- průměr ze sloupce data[teplota] 
+
+- míra “02 prumerne srazky vse” 
+
+Stránku vytvářenou pro potřebu popisu skryjte 
+
+ 
+
+ 
+
+Tabulka 
+
+- vizuál nebude ovlivněn průřezem nad data[lokalita] 
+
+- sloupce: 
+
+- data[lokalita] 
+
+- maximum ze sloupce data[teplota] 
+
+- míra “03 pocet dnu max teplota” : Počet dnů v dané lokalitě a roce, ve kterých bylo 	 
+
+dosaženo maximální teploty pro daný rok a lokalitu 
+
+- podmíněn formátovat nejvyšší hodnotu ze sloupce data[teplota], a to na barvu “gold” 
+
+ 
+
+Stránka “parametr” 
+
+ 
+
+Parametr 
+
+- vytvořit parametr “teploty” 
+
+- hodnoty: celé číslo 
+
+- minimální hodnota: 0 
+
+- maximální hodnota: 140 
+
+- inkrement: 1 
+
+ - výchozí hodnota: 140 
+
+ 
+
+- na stránku si zkopírovat průřezy nad data[lokalita] a data[rok], synchronizovat je. 
+
+ 
+
+Sloupcový graf 
+
+- osa x: data[mesic] 
+
+- osa y: míra “04 pocet dnu srazky”: Počet dnů v daném roce, měsíci a lokalitě, ve kterých 		byly srážky menší či rovno hodnotě vybrané v průřezu 
+
+Tabulka 
+
+- vypnout interakci s průřezem nad data[lokalita] 
+
+- sloupce: 
+
+- data[lokalita] 
+
+- dosadit míru “04 pocet dnu teplota” 
+
+- míra “05 podil dnu srazky", kdy počítáme podíl počtů dnů, v dané lokalitě, roce, ve kterých 	byly srážky menší či rovno hodnotě vybrané uživatelem vs počtu dnů v daném roce, lokalitě 		(výstup naformátovat jako procenta) 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
