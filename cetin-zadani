@@ -1,0 +1,85 @@
+20. Maximalni teplota v danem roce, lokalite
+	a mesicich 7 nebo 8
+
+21. Maximalni teplota v poslednim datumu
+v dane lokalite a danem roce
+
+22. Minimalni teplota v danem roce a lokalite
+- minimalni teplota ve vsech letech a dane lokalite
+
+BONUS
+23. Minimalni datum v dane lokalite (tj. bez ohledu na rok)
+
+
+
+ 
+
+Vizuál typu průřez nad data[lokalita] 
+
+Tabulka se sloupci: 
+
+data[Rok] 
+
+24. suma srážek v dané lokalitě a daném roce 
+
+25. suma srážek v měsících 7 a 8 v dané lokalitě, daném roce 
+
+26. Maximální teplota v dané lokalitě a daném roce 
+
+ 
+
+27. Maximální teplota v daném roce, lokalitě mínus maximální teplota v dané lokalitě napříč všemi roky 
+
+BONUS: Maximální teplota v dané lokalitě v posledním měsíci maximálního roku (napříč lokalitami) 
+
+ 
+
+28. Maximální teplota v daném roce a lokalitě mínus maximální teplota ve všech lokalitách v daném roce 
+
+29. Suma srážek v daném roce a dané lokalitě mínus suma srážek v dané lokalitě a předchozím roce 
+
+30. Maximální datum maximálních srážek v daném roce, dané lokalitě 
+
+31. Maximální datum maximálních srážek v daném roce, dané lokalitě a maximálním měsíci 
+(tj. počítáme maximum srážek v posledním měsíci daného roku v dané lokalitě) 
+
+32. Počet dnů v dané lokalitě, daném roce, kdy 
+
+- srážky = 0 
+
+- teplota > 30 
+
+ 
+
+
+
+1. Vizuál typu průřez nad data[lokalita]
+- omezit uživatele na jedinou hodnotu
+2. Vizuál typu průřez nad data[rok]
+- omezit uživatele na jedinou hodnotu
+3. Vyrobit tabulku (typ_obdobi) se sloupcem typ_obdobi s hodnotami:
+	- predchozi rok
+	- minimalni rok
+
+4. Vizuál typ parametr s názvem "treshold_srazek" s hodnotami 0 - 140 (celé číslo, posouváme o 1,
+výchozí hodnota 14O). 
+
+5. Vizuál typu průřez nad typ_obdobi[typ_obdobi]
+- omezit uživatele na jedinou hodnotu
+
+6. Vizuál typu spojnicový graf s hodnotami
+- osa x: data[Mesic]
+- osa y: Suma srážek v daném roce, dané lokalitě, daném měsíci
+- osa y2:  Míra "38 srazky obdobi": Suma srážek v dané lokalitě, měsíci
+	- v předchozí roce, pokud si uživatel vybral "predchozi rok"
+	- minimálním roce dané lokality, pokud si uživatel vybral "minimalni rok"
+6a. Do názvu spojnicového grafu dosadit míra "39 nazev grafu"
+	text: "Suma srážek v jednotlivých měsících roku {rok} a lokalitě {lokalita}
+
+7. Vizuál typu matice s hodnotami
+	- řádky: data[Rok]
+	- sloupce: data[Lokality]
+	- hodnoty: maximální teplota
+Pozn. Nastavit to, aby matice nebyla ovlivněna ostatními vizuály
+	- míra "40 max teplota tabulka": Na barvu "gold" podmíněně formátovat maximální teplotu v daném roce napříč lokalitami
+
