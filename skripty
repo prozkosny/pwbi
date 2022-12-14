@@ -258,3 +258,15 @@ IF(
             ALL(data),
         data[rok] = SELECTEDVALUE(data[rok])),
     data[teplota]),"GOLD")
+    
+    
+    
+   dim_datumy = 
+
+ADDCOLUMNS(
+   SELECTCOLUMNS( CALENDARAUTO(),"datum",[Date]),
+"rok",YEAR([datum]),
+"kvartal",QUARTER([datum]),
+"mesic",month([datum]),
+"den",day([datum]))
+
