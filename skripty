@@ -287,3 +287,67 @@ SUMX(
     &&data[rok] = SELECTEDVALUE(data[rok])
     &&data[mesic] <= SELECTEDVALUE(data[mesic])),
 data[srazky]))
+
+
+
+
+01 suma srazek = 
+
+IF(
+    SELECTEDVALUE(typ_obdobi[typ_obdobi]) = 
+    "prubezne",
+SUM(data[srazky]),
+
+SUMX(
+    FILTER(
+        ALL(data),
+    data[lokalita] = SELECTEDVALUE(data[lokalita])
+    &&data[rok] = SELECTEDVALUE(data[rok])
+    &&data[mesic] <= SELECTEDVALUE(data[mesic])),
+data[srazky]))
+
+
+nazev grafu = 
+
+"Vyvoj srazek v lokalite "&SELECTEDVALUE(data[lokalita])&" v roce "&SELECTEDVALUE(data[rok])
+
+
+
+
+
+podminene formatovani = 
+
+VAR srazky = sum(data[srazky])
+VAR srazky_minuly_rok = 
+SUMX(
+    FILTER(
+        ALL(data),
+    data[lokalita] = SELECTEDVALUE(data[lokalita])
+    &&data[mesic] = SELECTEDVALUE(data[mesic])
+    &&data[rok] = SELECTEDVALUE(data[rok]) - 1),
+data[srazky])
+VAR kumulativni_srazky = SUMX(
+    FILTER(
+        ALL(data),
+    data[lokalita] = SELECTEDVALUE(data[lokalita])
+    &&data[rok] = SELECTEDVALUE(data[rok])
+    &&data[mesic] <= SELECTEDVALUE(data[mesic])),
+data[srazky])
+
+VAR kumulativni_srazky_predchozi_rok  =
+
+SUMX(
+    FILTER(
+        ALL(data),
+    data[lokalita] = SELECTEDVALUE(data[lokalita])
+    &&data[rok] = SELECTEDVALUE(data[rok]) - 1
+    &&data[mesic] <= SELECTEDVALUE(data[mesic])),
+data[srazky])
+
+RETURN
+
+IF(
+    SELECTEDVALUE(typ_obdobi[typ_obdobi]) = 
+    "prubezne",
+    IF(srazky < srazky_minuly_rok,"RED"),
+    IF(kumulativni_srazky < kumulativni_srazky_predchozi_rok,"RED"))
